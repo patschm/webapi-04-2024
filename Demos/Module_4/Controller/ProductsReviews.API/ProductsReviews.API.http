@@ -1,0 +1,49 @@
+@ControllerWeb_HostAddress = https://localhost:7297
+@id = 56
+
+POST {{ControllerWeb_HostAddress}}/register
+Content-Type: application/json
+
+{
+  "email":"test@pasit.nl",
+  "password":"Test_12345"
+}
+###
+
+POST {{ControllerWeb_HostAddress}}/login
+Content-Type: application/json
+
+{
+  "email":"test@pasit.nl",
+  "password":"Test_12345"
+}
+###
+
+GET {{ControllerWeb_HostAddress}}/brands
+Accept: application/json
+Authorization: Bearer CfDJ8DT63VrYRGhAmNd0oKf_yybP8PzKvDMtOD3eCkO6Mp4yiiczY1-N-RhIGMK4z5uQ_iLtU-YP9b_mIVr8dB2XEGAtFyCZveglKKuOZKBOJheSMoE7A2S1t3B9jq0QSz8Oua17SyAVEwmH2rPGaoY_Y-0A7T7yGCwFLMcUDuHdepqdDPuydfUo5b6qQoC50CV5AFO8cc9mxZXlbRI0yShmLy1sLCJIehGurZNhLxMnby2nONv4RJN3HnFGt_AloiXgNdiIDTVx_N3nv_ptqUQJ0vjIhjVDlHsOOAZLTjzjc8Z5rXxJSm1t_Ugrcg9iW9tlarYh9CeDVwb1K9uLnhzgA118UgrPVj0Y2RgNY7IxfsK_7rRMJFhLjwgKO0gmcAG9bT8cjsjvghC9BmK5XXJG3Hyr4W15giCY0xDmT7_ap7z5-OPgFjXiDP3haI5ccL2ydXSuCUJ68FfAfRXk4U5kKtLzaLz-J2SBBQ-zxtn7tROsrkhywLMZijbldy9eZQUyNRwFAdf87UWlqwCvk4vPTlQCkZu_2alpuWvisLYMLsZ9-gP9LvxqD5fmcK0ERBN2V4zY91Hr0pgTGquqA82BNbzJdRSlkAtkHyUT_l0vMIpx7Jid9hfUqGA8uLp1PLWfE0HXyM0fRhBo1Dqa0744Kydx5k7hJoJJEpC3ca4dCIAwQD7QhNHuVObpWBJlmHm1BA
+###
+
+POST {{ControllerWeb_HostAddress}}/brands
+Content-Type: application/json
+
+{
+  "name":"Test"
+}
+###
+
+GET {{ControllerWeb_HostAddress}}/brands/{{id}}
+Accept: application/json
+###
+
+PUT {{ControllerWeb_HostAddress}}/brands/{{id}}
+Content-Type: application/json
+
+{
+  "name":"Test2"
+}
+###
+
+DELETE {{ControllerWeb_HostAddress}}/brands/{{id}}
+
+###
