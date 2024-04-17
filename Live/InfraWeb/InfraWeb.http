@@ -1,0 +1,6 @@
+@InfraWeb_HostAddress = http://localhost:5038
+
+GET {{InfraWeb_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

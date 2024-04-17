@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ProductReviews.Interfaces;
 using ProductReviews.DAL.EntityFramework.Entities;
+using ProductReviews.DTO;
 
 namespace ProductReviews.API.Controllers;
 
@@ -17,14 +18,16 @@ public class ProductGroupController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ICollection<ProductGroup>> Get(int page = 1, int count = 10)
+    public async Task<ICollection<ProductGroupDTO>> Get(int page = 1, int count = 10)
     {
-        return await _repository.GetAsync(page, count);
+        var q = await _repository.GetAsync(page, count);
+        return q.Select(p => ProductGroupDTO.Create(p)).ToList();
     }
     [HttpGet("{id}")]
-    public async Task<ProductGroup> Get(int id)
+    public async Task<ProductGroupDTO> Get(int id)
     {
-        return await _repository.GetByIdAsync(id);
+        var pg =await _repository.GetByIdAsync(id);
+        return ProductGroupDTO.Create(pg);
     }
     [HttpPost]
     public async Task<ProductGroup> Post([FromBody]ProductGroup productGroup)

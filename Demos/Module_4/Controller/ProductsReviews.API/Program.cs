@@ -18,7 +18,8 @@ public class Program
         builder.Services.AddAutoMapper(cfg=>cfg.AddProfile<ProductsReviewsProfile>());
 
         builder.Services.AddDbContext<AuthenticationContext>(opts => {
-            opts.UseSqlite(@"Data Source=Database\aspnetauth.db");
+            opts.UseSqlServer(@"Server=.\SQLEXPRESS;Database=Authorize;Trusted_Connection=True;MultipleActiveResultSets=True;TrustServerCertificate=true");
+            //opts.UseSqlite(@"Data Source=Database\aspnetauth.db");
         });
         builder.Services.AddIdentityApiEndpoints<IdentityUser>(opts => {
             opts.Password.RequiredLength = 5;

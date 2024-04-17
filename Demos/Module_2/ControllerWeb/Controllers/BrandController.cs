@@ -9,6 +9,7 @@ namespace ControllerWeb.Controllers
 {
     [ApiController]
     [Route("brands")]
+    //[CustomFilter]
     public class BrandController : ControllerBase
     {
         private readonly ILogger<BrandController> _logger;
@@ -26,6 +27,7 @@ namespace ControllerWeb.Controllers
         [ServiceFilter<CustomFilterAttribute>]
         public IEnumerable<BrandDTO> GetBrands([FromQuery]int page = 1, [FromQuery]int count = 10)
         {
+            _logger.LogInformation("Begin GetBrands");
             var query = _dbContext.Brands.Skip((page - 1) * count).Take(count);
             return _mapper.ProjectTo<BrandDTO>(query);
         }

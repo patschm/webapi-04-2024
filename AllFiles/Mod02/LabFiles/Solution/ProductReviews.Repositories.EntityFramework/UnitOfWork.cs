@@ -1,32 +1,40 @@
+using Microsoft.Extensions.DependencyInjection;
 using ProductReviews.DAL.EntityFramework.Database;
 using ProductReviews.Interfaces;
 
-namespace ProductReviews.Repositories.EntityFramework
+namespace ProductReviews.Repositories.EntityFramework;
+
+public class UnitOfWork : IUnitOfWork
 {
-    public class UnitOfWork : IUnitOfWork
+    private readonly ProductReviewsContext _context;
+
+    public UnitOfWork(ProductReviewsContext context)
     {
-        private readonly ProductReviewsContext _context;
+        _context = context;
+        ProductGroupRepository = new ProductGroupRepository(_context);
+        ProductRepository = new ProductRepository(_context);
+        BrandRepository = new BrandRepository(_context);
+        ReviewRepository = new ReviewRepository(_context);
+    }
 
-        public UnitOfWork(ProductReviewsContext context)
-        {
-            _context = context;
-            ProductGroupRepository = new ProductGroupRepository(_context);
-            ProductRepository = new ProductRepository(_context);
-            BrandRepository = new BrandRepository(_context);
-            ReviewRepository = new ReviewRepository(_context);
-        }
+    public IProductGroupRepository ProductGroupRepository { get; }
 
-        public IProductGroupRepository ProductGroupRepository { get; }
+    public IProductRepository ProductRepository {get;}
 
-        public IProductRepository ProductRepository {get;}
+    public IBrandRepository BrandRepository {get;}
 
-        public IBrandRepository BrandRepository {get;}
+    public IReviewRepository ReviewRepository {get;}
 
-        public IReviewRepository ReviewRepository {get;}
+    public async Task SaveAsync()
+    {
+        await _context.SaveChangesAsync();
+    }
+}
 
-        public async Task SaveAsync()
-        {
-            await _context.SaveChangesAsync();
-        }
+public static class SeviceExtensions
+{
+    public static void AddRepositories(this IServiceCollection services)
+    {
+        services.AddTransient<IUnitOfWork, UnitOfWork>();
     }
 }

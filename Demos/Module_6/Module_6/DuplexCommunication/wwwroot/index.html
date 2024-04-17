@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Textbox and Send Button</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/5.0.5/signalr.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="input-group mb-3">
+                    <input id="nick" type="text" class="form-control" placeholder="Type your nickname here">
+                    <button class="btn btn-primary" type="button" id="register-button">Regsiter</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="input-group mb-3">
+                    <input id="channel" type="text" class="form-control" placeholder="Type the channel to join">
+                    <button class="btn btn-primary" type="button" id="join-button">Join</button>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="input-group mb-3">
+                    <input id="message" type="text" class="form-control" placeholder="Type your message here">
+                    <button class="btn btn-primary" type="button" id="send-button">Send</button>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="mb-3">
+                    <textarea class="form-control" id="message-area" rows="15"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="index.js"></script>
+    <script type="module">
+        import { join, register, send } from './index.js';
+        const msgArea = document.getElementById("message-area");
+
+        function onMessage(nick, message) {
+            msgArea.append(`${nick}> ${message}\n`)
+        }
+        function onJoin(nick, channel) {
+            msgArea.append(`## [${nick}] has joined channel ${channel}\n`)
+        }
+
+        document.getElementById("register-button").addEventListener("click", () => {
+            let nick = document.getElementById("nick").value;
+            register(nick, onMessage, onJoin);
+        }, false);
+        document.getElementById("join-button").addEventListener("click", () => {
+            let channel = document.getElementById("channel").value;
+            join(channel);
+        }, false);
+        document.getElementById("send-button").addEventListener("click", () => {
+            let message = document.getElementById("message").value;
+            send(message)
+        }, false);
+        
+
+
+
+    </script>
+</body>
+</html>

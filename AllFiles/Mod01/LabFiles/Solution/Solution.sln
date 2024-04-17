@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductReviews.Repositories
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductReviews.Repositories.Tests", "ProductReviews.Repositories.Tests\ProductReviews.Repositories.Tests.csproj", "{7A48FC07-5F6B-4097-86EF-82BB5CD01EC4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductReviews.DTO", "ProductReviews.DTO\ProductReviews.DTO.csproj", "{3BF90B09-5CF8-4F91-996F-5BC1E0BC274E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{7A48FC07-5F6B-4097-86EF-82BB5CD01EC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A48FC07-5F6B-4097-86EF-82BB5CD01EC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A48FC07-5F6B-4097-86EF-82BB5CD01EC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BF90B09-5CF8-4F91-996F-5BC1E0BC274E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BF90B09-5CF8-4F91-996F-5BC1E0BC274E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BF90B09-5CF8-4F91-996F-5BC1E0BC274E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BF90B09-5CF8-4F91-996F-5BC1E0BC274E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

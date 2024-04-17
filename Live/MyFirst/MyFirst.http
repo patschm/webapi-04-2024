@@ -1,0 +1,13 @@
+@MyFirst_HostAddress = https://localhost:7118
+
+GET {{MyFirst_HostAddress}}/hello/300
+
+###
+
+POST {{MyFirst_HostAddress}}/hello
+Content-Type: application/json
+
+{
+  "name": "Patrick Doe",
+  "age": 34
+}

@@ -18,8 +18,10 @@ namespace ControllerWeb
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            builder.Services.AddCors(opts => {
-                opts.AddPolicy("cors", conf => {
+            builder.Services.AddCors(opts =>
+            {
+                opts.AddPolicy("cors", conf =>
+                {
                     conf.AllowAnyHeader();
                     conf.AllowAnyMethod();
                     conf.AllowAnyOrigin();

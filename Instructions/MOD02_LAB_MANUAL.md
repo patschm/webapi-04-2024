@@ -43,7 +43,7 @@ In large applications you might end up with registering hundreds of Repositories
 #### Task 3: Register the UnitOfWork object in the ASP.NET Core Dependency Injection mechanism
 
 1. In the **ProductReviews.API** project, locate **Program.cs**.
-2. In the **ConfigureServices** method, register **UnitOfWork**.
+2. Register the **UnitOfWork** at the Dependency Injector (**builder.Services**).
 3. Remove the Dependencies for the repositories
 
 #### Task 4: Change the controller’s constructors to request an injected repository

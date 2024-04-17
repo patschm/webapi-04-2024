@@ -16,12 +16,12 @@ public class CsvFormatter : TextOutputFormatter
     public override async Task WriteResponseBodyAsync(OutputFormatterWriteContext context, Encoding selectedEncoding)
     {
         var buffer = new StringBuilder();
-        buffer.AppendLine("Name");
+        buffer.AppendLine("Id, Name");
         if (context.Object is IEnumerable<BrandDTO> brands)
         {
             foreach (var item in brands)
             {
-                buffer.AppendLine(item.Name);
+                buffer.AppendLine($"{item.Id}, {item.Name}");
             }
         }
         await context.HttpContext.Response.WriteAsync(buffer.ToString(), selectedEncoding);

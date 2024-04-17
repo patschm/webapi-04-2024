@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ProductReviews.DTO\ProductReviews.DTO.csproj" />
     <ProjectReference Include="..\ProductReviews.Repositories.EntityFramework\ProductReviews.Repositories.EntityFramework.csproj" />
   </ItemGroup>
 
